@@ -6,7 +6,7 @@ module.exports = Letter;
     this.wasGuessed = wasGuessed; // boolean
   }
 
-  // creates the printChar method and applies it to all Letter objects
+  // creates the toString method and applies it to all Letter objects
 Letter.prototype.toString = function() {
   if (this.wasGuessed) {
     return this.character;

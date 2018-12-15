@@ -2,12 +2,13 @@
 const inquirer = require("inquirer");
 const Letter = require("./Letter.js");
 
-// var A = new 
+var words = [
+    "Apple", "Cat", "Bananna", "Dog", "School"
+]
 
-// var guessA = A.
-
-// var newLetter = new Letter.Letter(answers.letter, false);
-
+function randomWord() {
+    // Math.random
+}
 
 inquirer.prompt([
     {
