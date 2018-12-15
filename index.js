@@ -2,12 +2,15 @@
 const inquirer = require("inquirer");
 const Letter = require("./Letter.js");
 
-var words = [
-    "Apple", "Cat", "Bananna", "Dog", "School"
-]
+var words = {
+    wordlist:
+        [
+            "Apple", "Cat", "Bananna", "Dog", "School"
+        ],
 
-function randomWord() {
+    randomWord: function() {
     // Math.random
+    }
 }
 
 inquirer.prompt([
