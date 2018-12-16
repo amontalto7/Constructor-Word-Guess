@@ -19,3 +19,11 @@ Word.prototype.guessLetter = function(c) {
         this.letters[i].checkChar(c);
     }
 }
+
+// MAP function
+
+// const word = 'dallin'
+// const input = 'a'
+// word.split('').map((val, i, a) => {
+//   return val === input ? val : '_'
+// }).join(' ')
