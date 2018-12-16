@@ -5,6 +5,7 @@ const Word = require("./Word.js");
 
 let tries = 7;
 let wins = 0;
+let correctGuess = false;
 
 var words = {
   wordlist: [
@@ -61,16 +62,30 @@ inquirer.prompt([
     }
   ]).then(function(answers) {
     // var newLetter = new Letter("A", false);
-    // printInfo method is run to show that the newProgrammer object was successfully created and filled
     // newLetter.checkChar(answers.letter);
     // var char =  newLetter.toString();
     // console.log(char);
-    thisWord.guessLetter(answers.letter.toUpperCase());
+    let guessedLetter = answers.letter.toUpperCase();
+    thisWord.guessLetter(guessedLetter);
     console.log(
       thisWord
         .showWord()
         .split("")
         .join(" "));
+
+        console.log(thisWord.letters);
+        for (var i = 0; i < thisWord.letters.length; i++) {
+          if ((thisWord.letters[i].wasGuessed) && (thisWord.letters[i].character === guessedLetter)) {
+            correctGuess = true;
+            break;
+          } else {
+            correctGuess = false;
+          }
+        }
+        if (!correctGuess) {
+          tries--;
+          console.log(tries);
+        }
   });
 
 // console.log(letterArray);
