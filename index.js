@@ -53,39 +53,53 @@ function getNewWord() {
   return newWord;
 }
 
-let thisWord = getNewWord();
 
-inquirer.prompt([
-    {
-      name: "letter",
-      message: "Guess a letter"
-    }
-  ]).then(function(answers) {
-    // var newLetter = new Letter("A", false);
-    // newLetter.checkChar(answers.letter);
-    // var char =  newLetter.toString();
-    // console.log(char);
-    let guessedLetter = answers.letter.toUpperCase();
-    thisWord.guessLetter(guessedLetter);
-    console.log(
-      thisWord
-        .showWord()
-        .split("")
-        .join(" "));
+let playGame = function(thisWord) {
+  console.log("Tries remaining: " +tries);
 
-        console.log(thisWord.letters);
-        for (var i = 0; i < thisWord.letters.length; i++) {
-          if ((thisWord.letters[i].wasGuessed) && (thisWord.letters[i].character === guessedLetter)) {
-            correctGuess = true;
-            break;
-          } else {
-            correctGuess = false;
+
+  inquirer.prompt([
+      {
+        name: "letter",
+        message: "Guess a letter"
+      }
+    ]).then(function(answers) {
+      // var newLetter = new Letter("A", false);
+      // newLetter.checkChar(answers.letter);
+      // var char =  newLetter.toString();
+      // console.log(char);
+      let guessedLetter = answers.letter.toUpperCase();
+      thisWord.guessLetter(guessedLetter);
+      console.log(
+        thisWord
+          .showWord()
+          .split("")
+          .join(" "));
+
+          console.log(thisWord.letters);
+          for (var i = 0; i < thisWord.letters.length; i++) {
+            if ((thisWord.letters[i].wasGuessed) && (thisWord.letters[i].character === guessedLetter)) {
+              correctGuess = true;
+              break;
+            } else {
+              correctGuess = false;
+            }
           }
-        }
-        if (!correctGuess) {
-          tries--;
-          console.log(tries);
-        }
-  });
 
+          if (!correctGuess) {
+            console.log("Nope. Try again.");
+          }
+
+          tries--;
+          if (tries > 0) {
+            playGame(thisWord);
+          } else {
+            console.log("\nGame Over");
+          }
+
+  });
 // console.log(letterArray);
+}
+
+let thisWord = getNewWord();
+playGame(thisWord);
