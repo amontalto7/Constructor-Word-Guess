@@ -2,6 +2,7 @@ const Letter = require("./Letter.js");
 
 // constructor function
 module.exports = Word;
+
 function Word(letters, wasGuessed) {
   this.letters = letters; // array of Letter objects
 }

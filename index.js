@@ -57,6 +57,7 @@ function getNewWord() {
 let playGame = function(thisWord) {
   console.log("Tries remaining: " +tries);
 
+// TODO: Wrap this in  a function to allow multiple plays / score
 
   inquirer.prompt([
       {
@@ -76,13 +77,15 @@ let playGame = function(thisWord) {
           .split("")
           .join(" "));
 
-          console.log(thisWord.letters);
+          // console.log(thisWord.letters);
           for (var i = 0; i < thisWord.letters.length; i++) {
             if ((thisWord.letters[i].wasGuessed) && (thisWord.letters[i].character === guessedLetter)) {
               correctGuess = true;
+              // TODO: add counters
               break;
             } else {
               correctGuess = false;
+              // TODO: add counters
             }
           }
 
@@ -100,6 +103,6 @@ let playGame = function(thisWord) {
   });
 // console.log(letterArray);
 }
-
+ 
 let thisWord = getNewWord();
 playGame(thisWord);

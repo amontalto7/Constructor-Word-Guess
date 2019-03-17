@@ -12,6 +12,7 @@ module.exports = Letter;
   if (this.wasGuessed) {
     return this.character;
   } else {
+    
     return "_";
   }
 };
